@@ -1,0 +1,48 @@
+@font-face {
+  font-family: Cinzel;
+  src: url("fonts/Cinzel-Regular.otf");
+}
+
+body {
+  font-family: Cinzel;
+  color: #ffffff;
+  transition-duration: 1000ms;
+}
+
+header {
+  position: fixed;
+  background-color: pink;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 0px;
+  width: 50%;
+  mix-blend-mode: difference;
+}
+
+header * {
+  padding-left: 5%;
+}
+
+nav {
+  display: block;
+  top: 10em;
+  transition: 1000ms;
+  position: relative;
+  left: 10em;
+  width: 100%;
+  mix-blend-mode: difference;
+}
+
+nav h2 {
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  width: 50%;
+  background-color: pink;
+  padding-left: 10%;
+  transition: 1000ms;
+}
+
+nav h2:hover {
+  background-color: gray;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+}
