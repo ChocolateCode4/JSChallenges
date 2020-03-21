@@ -1,5 +1,8 @@
 Window.onload = () => config();
-let gameState = "loading";
+const game = {
+  state: "loading",
+  objects: []
+};
 
 class Canvas {
   constructor(width, height) {
@@ -32,15 +35,17 @@ class TextBox {
     this.textY = this.y + this.h/1.15;
     this.textW = this.h;
     this.text = text;
+    this.color = color;
     this.colorT = colorT;
-    //which ones do i send from here
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fillRect(x,y,w,h);
-    ctx.stroke;
-    ctx.fillStyle = this.colorT;
-    ctx.font =  this.textW + "px serif";
-    ctx.fillText(this.text, this.textX, this.textY);
+  }
+  render() {
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x, this.y, this.w, this.h);
+      ctx.stroke;
+      ctx.fillStyle = this.colorT;
+      ctx.font = this.textW + "px serif";
+      ctx.fillText(this.text, this.textX, this.textY);
   }
   align(position) {
     switch(position) {
@@ -58,9 +63,6 @@ let canvas = new Canvas(window.innerWidth, window.innerHeight),
 
 function update() {
   canvas.clearAll();
-  if(gameState == "menu-start") {
-    GUI("display");
-  }
   main();
   window.requestAnimationFrame(update);
 }
@@ -69,22 +71,29 @@ function GUI(scene) {
   switch(scene) {
     case "display":
       let playButton = new TextBox("Play", 0, canvas.height/2, canvas.width, 50, "green", "black");
-      gameState = "menu-start";
+      game.state = "menu-start";
       playButton.align("center");
-      console.log("Display")
+      game.objects.push(playButton);
     break;
     default:
       console.log("GUI Fail");
   }
 }
 
+
 function main() {
- 
+  render();
 }
 
 function config() {
   GUI("display");
   update();
+}
+
+function render () {
+  game.objects.forEach((objs)=> {
+    objs.render();
+  });
 }
 
 function home() {
