@@ -1,4 +1,5 @@
 Window.onload = () => config();
+let gameState = "loading";
 
 class Canvas {
   constructor(width, height) {
@@ -22,16 +23,32 @@ class Canvas {
 }
 
 class TextBox {
-  constructor(text,x,y,w,h,color){
+  constructor(text,x,y,w,h,color,colorT){
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
+    this.textX = this.x;
+    this.textY = this.y + this.h/1.15;
+    this.textW = this.h;
     this.text = text;
+    this.colorT = colorT;
     ctx.beginPath();
     ctx.fillStyle = color;
     ctx.fillRect(x,y,w,h);
     ctx.stroke;
+    ctx.fillStyle = this.colorT;
+    ctx.font =  this.textW + "px serif";
+    ctx.fillText(this.text, this.textX, this.textY);
+  }
+  align(position) {
+    switch(position) {
+      case "center":
+        this.textX = this.w/2;
+        break;
+      default:
+        return "Alignment is not possible";
+    }
   }
 }
 
@@ -41,13 +58,19 @@ let canvas = new Canvas(window.innerWidth, window.innerHeight),
 function update() {
   window.requestAnimationFrame(update);
   canvas.clearAll();
+  if(gameState == "menu-start") {
+    GUI("display");
+  }
   main();
 }
 
 function GUI(scene) {
   switch(scene) {
     case "display":
-      
+      let playButton = new TextBox("Play", 0, canvas.height/2, canvas.width, 50, "green", "black");
+      gameState = "menu-start";
+      playButton.align("center");
+      console.log("Display")
     break;
     default:
       console.log("GUI Fail");
@@ -57,15 +80,16 @@ function GUI(scene) {
 let x = 1, vx = 25;
 
 function main() {
-  let squareTest = new TextBox("",x,100,100,100,"green")
-  x+=vx
-  if(x + squareTest.w/2 > canvas.dom.width || x < 0) {
-    vx = -(vx)
-  }
+ 
+}
+
+function config() {
+  GUI("display");
+  update();
 }
 
 function home() {
   window.location.href = "jschallenges/index.html";
 }
 
-update();
+config();
