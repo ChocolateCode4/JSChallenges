@@ -33,6 +33,7 @@ class TextBox {
     this.textW = this.h;
     this.text = text;
     this.colorT = colorT;
+    //which ones do i send from here
     ctx.beginPath();
     ctx.fillStyle = color;
     ctx.fillRect(x,y,w,h);
@@ -56,12 +57,12 @@ let canvas = new Canvas(window.innerWidth, window.innerHeight),
     ctx = canvas.ctx;
 
 function update() {
-  window.requestAnimationFrame(update);
   canvas.clearAll();
   if(gameState == "menu-start") {
     GUI("display");
   }
   main();
+  window.requestAnimationFrame(update);
 }
 
 function GUI(scene) {
@@ -76,8 +77,6 @@ function GUI(scene) {
       console.log("GUI Fail");
   }
 }
-
-let x = 1, vx = 25;
 
 function main() {
  
