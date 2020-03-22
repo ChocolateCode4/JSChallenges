@@ -47,6 +47,9 @@ class TextBox {
       ctx.font = this.textW + "px serif";
       ctx.fillText(this.text, this.textX, this.textY);
   }
+  clicked() {
+    console.log("clicked " + this.x +"/"+this.y);
+  }
   align(position) {
     switch(position) {
       case "center":
