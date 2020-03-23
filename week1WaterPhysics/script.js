@@ -4,7 +4,7 @@
 */
 
 window.onload = () => config();
-
+ 
 class Canvas {
   constructor(w, h, color) {
     this.dom = document.querySelector("canvas");
