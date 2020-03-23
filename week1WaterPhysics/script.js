@@ -271,7 +271,7 @@ function config() {
   Controller.enableClickToAdd();
   GameElements.grounds.push(new Ground(0, canvas.dom.height / 1.15, canvas.dom.width, 1, "black"));
   animate();
-}
+} 
 //GLOBAL
 let canvas = new Canvas(window.innerWidth, window.innerHeight, "#ffffff"),
   ctx = canvas.ctx;
