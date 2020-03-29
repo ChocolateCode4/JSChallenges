@@ -1,13 +1,12 @@
 {
-  "challenges": [{
-    "week1": [
-      "Week 1: Questionnaire! (My version Poker)",
-      "week1/index.html"
-      ]},
-      {
-    "week2": [
-      "Week 2: TBA",
-      ""
-    ]}
-  ]
+  "challenges": [
+    {
+     "name": "week 1 - Questionnaire",
+     "location": "week1/index.html"
+    },
+    {
+     "name": "week 1 - Water Droplets Physics",
+     "location": "week1WaterPhysics/index.html"
+    }
+    ]
 }
